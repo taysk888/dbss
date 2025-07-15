@@ -6,6 +6,8 @@ from groq import Groq
 import os
 os.environ['GROQ_API_KEY'] = os.getenv('groq')
 
+
+
 # for cloud ..........
 
 app = Flask(__name__)
@@ -45,7 +47,7 @@ def llama_reply():
     return(render_template("llama_reply.html",r=completion.choices[0].message.content))
 
 @app.route("/deep_reply",methods=["GET","POST"])
-def llama_reply():
+def deep_reply():
     q = request.form.get("q")
     # load model
     client = Groq()
@@ -58,7 +60,7 @@ def llama_reply():
             }
         ]
     )
-    return(render_template("llama_reply.html",r=completion.choices[0].message.content))
+    return(render_template("deep_reply.html",r=completion.choices[0].message.content))
 
 @app.route("/dbs",methods=["GET","POST"])
 def dbs():
