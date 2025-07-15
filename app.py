@@ -7,7 +7,6 @@ import os
 os.environ['GROQ_API_KEY'] = os.getenv('groq')
 
 
-
 # for cloud ..........
 
 app = Flask(__name__)
@@ -27,7 +26,7 @@ def llama():
     return(render_template("llama.html"))
 
 @app.route("/deep",methods=["GET","POST"])
-def llama():
+def deep():
     return(render_template("deep.html"))
 
 @app.route("/llama_reply",methods=["GET","POST"])
