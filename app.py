@@ -24,6 +24,10 @@ def main():
 def llama():
     return(render_template("llama.html"))
 
+@app.route("/deep",methods=["GET","POST"])
+def llama():
+    return(render_template("deep.html"))
+
 @app.route("/llama_reply",methods=["GET","POST"])
 def llama_reply():
     q = request.form.get("q")
@@ -31,6 +35,22 @@ def llama_reply():
     client = Groq()
     completion = client.chat.completions.create(
         model="llama-3.1-8b-instant",
+        messages=[
+            {
+                "role": "user",
+                "content": q
+            }
+        ]
+    )
+    return(render_template("llama_reply.html",r=completion.choices[0].message.content))
+
+@app.route("/deep_reply",methods=["GET","POST"])
+def llama_reply():
+    q = request.form.get("q")
+    # load model
+    client = Groq()
+    completion = client.chat.completions.create(
+        model="deepseek-r1-distill-llama-70b",
         messages=[
             {
                 "role": "user",
