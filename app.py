@@ -43,7 +43,7 @@ def telegram():
     else:
         status = "Failed to start the telegram bot. Please check the logs."
 
-    return(render_template("telegram.html"), status=status)
+    return(render_template("telegram.html", status=status)
 
 @app.route("/stop_telegram",methods=["GET","POST"])
 def stop_telegram():
@@ -55,11 +55,11 @@ def stop_telegram():
 
     # set status message
     if webhook_response.status_code == 200:
-        status = "The telegram bot is running. Please check with the telegram bot. @sctp1f_tt_bot"
+        status = "The telegram bot has stopped. Please check with the telegram bot. @sctp1f_tt_bot"
     else:
-        status = "Failed to start the telegram bot. Please check the logs."
+        status = "Failed to stop the telegram bot. Please check the logs."
 
-    return(render_template("telegram.html"), status=status)
+    return(render_template("telegram.html", status=status)
 
 @app.route("/llama",methods=["GET","POST"])
 def llama():
