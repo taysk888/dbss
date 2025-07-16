@@ -39,7 +39,7 @@ def telegram():
 
      # set status message
     if webhook_response.status_code == 200:
-        status = "The telegram bot is running. Please check with the telegram bot. @sctp1f_tt_bot"
+        status = "The telegram bot is running. Please check with the telegram bot. @fred_sctp_bot"
     else:
         status = "Failed to start the telegram bot. Please check the logs."
 
@@ -53,10 +53,9 @@ def stop_telegram():
     delete_webhook_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/deleteWebhook"
     webhook_response = requests.post(delete_webhook_url, json={"url": domain_url, "drop_pending_updates": True})
 
-
     # set status message
     if webhook_response.status_code == 200:
-        status = "The telegram bot has stopped. Please check with the telegram bot. @sctp1f_tt_bot"
+        status = "The telegram bot has stopped. Please check with the telegram bot. @fred_sctp_bot"
     else:
         status = "Failed to stop the telegram bot. Please check the logs."
 
