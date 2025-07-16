@@ -43,7 +43,7 @@ def telegram():
     else:
         status = "Failed to start the telegram bot. Please check the logs."
 
-    return(render_template("telegram.html", status=status)
+    return(render_template("telegram.html", status=status))
 
 @app.route("/stop_telegram",methods=["GET","POST"])
 def stop_telegram():
@@ -59,7 +59,7 @@ def stop_telegram():
     else:
         status = "Failed to stop the telegram bot. Please check the logs."
 
-    return(render_template("telegram.html", status=status)
+    return(render_template("telegram.html", status=status))
 
 @app.route("/llama",methods=["GET","POST"])
 def llama():
